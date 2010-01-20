@@ -1,0 +1,35 @@
+ArEncrypt
+===========
+
+This is a plugin to make fields easily encrypt-able. It works much like the serialize method.
+
+Encryption is done before save using Digest::SHA1.hexdigest()
+
+
+Example
+=======
+
+# class User < ActiveRecord::Base
+#   
+#   attr_accessor :confirm_password
+#   
+#   validate :password_match
+#   encrypt :password
+#   encrypt :confirm_password
+#   
+#   
+#   def password_match
+#     errors.add(:password, "confirmation must match.") if self.password_changed? && (self.password != self.confirm_password)
+#   end
+#   
+# end
+
+you can also redefine the encryption method by overriding the encrypt method of the ArEncrypt module
+
+# module ArEncrypt
+#   def self.encrypt(string)
+#     Digest::SHA1.hexdigest(string).to_s
+#   end
+# end
+
+Copyright (c) 2010 Kelly Mahan, released under the MIT license
