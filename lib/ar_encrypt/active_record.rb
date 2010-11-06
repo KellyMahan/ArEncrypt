@@ -10,6 +10,10 @@ module ActiveRecord
           end
           return true
         end
+        define_method("#{attr_name}_match?") do |match_str|
+          return eval("self.#{attr_name} == ArEncrypt.encrypt(\"#{eval("match_str")}\")")
+        end
+        
         before_save "encrypt_#{attr_name}"
       end
     end
