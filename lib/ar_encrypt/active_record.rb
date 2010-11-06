@@ -13,6 +13,9 @@ module ActiveRecord
         define_method("#{attr_name}_match?") do |match_str|
           return eval("self.#{attr_name} == ArEncrypt.encrypt(\"#{eval("match_str")}\")")
         end
+        class_eval do
+          eval("def self.#{attr_name}_find(str); find_by_#{attr_name}(ArEncrypt.encrypt(str)); end;")
+        end
         
         before_save "encrypt_#{attr_name}"
       end
