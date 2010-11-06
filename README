@@ -32,4 +32,8 @@ you can also redefine the encryption method by overriding the encrypt method of 
 #   end
 # end
 
+to check for a match you just call the attribute that is encrypted with _match? on the end
+example:
+password_match?('correctpassword')
+
 Copyright (c) 2010 Kelly Mahan, released under the MIT license
