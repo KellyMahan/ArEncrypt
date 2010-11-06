@@ -16,6 +16,9 @@ module ActiveRecord
         class_eval do
           eval("def self.#{attr_name}_find(str); find_by_#{attr_name}(ArEncrypt.encrypt(str)); end;")
         end
+        class_eval do
+          eval("def self.#{attr_name}_find_all(str); find(:all, :conditions=>[\"#{attr_name} = ?\", ArEncrypt.encrypt(str)]); end;")
+        end
         
         before_save "encrypt_#{attr_name}"
       end

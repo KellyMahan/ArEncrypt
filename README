@@ -41,4 +41,7 @@ u.password_match?('correctpassword')
 to find a user with a matching ssn
 User.ssn_find('123456789')
 
+to find all users with a matching ssn
+User.ssn_find_all('123456789')
+
 Copyright (c) 2010 Kelly Mahan, released under the MIT license
