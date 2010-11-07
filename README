@@ -44,4 +44,11 @@ User.ssn_find('123456789')
 to find all users with a matching ssn
 User.ssn_find_all('123456789')
 
+added an option of finds to extend the search for unencrypted parameters
+
+to find all users with a matching ssn and name
+User.ssn_find_all('123456789', :name=>'john')
+
+
+
 Copyright (c) 2010 Kelly Mahan, released under the MIT license
